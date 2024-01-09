@@ -9,13 +9,22 @@ export default{
     data(){
     return{
       store,
-      opzioneSelezionata: ''
+      opzioneSelezionata: '',
      }
     },
+    watch: {
+        opzioneSelezionata(newValue) {
+          store.selectedArchetype = newValue;
+        }
+    }
+
+}
 
     
 
-}
+    
+
+
 
 </script>
 
@@ -25,27 +34,26 @@ export default{
    <div class="container">
 
    
-    <select class="form-select mb-4 w-25" v-model="opzioneSelezionata">
-      <option value="" disabled>
+    <select class="form-select mb-4 w-25" v-model="opzioneSelezionata" @change="$emit('changeArchetype')">
 
-        Select archetype
-      
-      </option>
+      <option value="" disabled>Scegli un archetipo</option>
 
-      <option v-for="type in store.archetypeNames" :key="type.id" value="">
+      <option v-for="(type, index) in store.archetypeNames" :key="index" :value="type.archetype_name">
         {{ type.archetype_name }}
       </option>
-
       
+    </select>
 
+    <p v-if="opzioneSelezionata !== ''">
+      Hai selezionato: {{ opzioneSelezionata }}
+    </p>
 
-  
+    
     
 
 
-      
-    </select>
-    <p v-if="opzioneSelezionata">Hai selezionato: {{ opzioneSelezionata }}</p>
+
+   
  
 
    </div>

@@ -22,9 +22,19 @@ export default{
   },
 
   methods:{
+
     getCard(){
+      let myUrl = store.apiUrl
+
+      if ("opzioneSelezionata !== ''"){
+        myUrl+= `&archetype=${store.selectedArchetype}` 
+      }
+      
+
+
+
       axios
-      .get(store.apiUrl)
+      .get(myUrl)
       .then((res => {
 
         console.log(res.data.data)
@@ -37,6 +47,8 @@ export default{
         console.log("Errori", err)
       })
     },
+
+
 
     getArcheotype(){
       axios
@@ -75,7 +87,7 @@ export default{
 
   <main>
 
-    <SelectArchetype/>
+    <SelectArchetype @changeArchetype='getCard' />
 
     <CardList/>
 
