@@ -15,11 +15,15 @@ export default{
 <template>
 
 
-    <div v-for="image in info.card_images" :key="image.id">
+    <!-- <div v-for="image in info.card_images" :key="image.id">
         <img class="img-fluid mb-3" :src="image.image_url" alt="">
-        <span>{{ info.name }}</span>
+       
         <div>{{info.archetype}}</div>
-    </div>
+    </div> -->
+    
+    <img class="img-fluid mb-3" :src="info.card_images[0].image_url" alt="">
+    <div>{{ info.name }}</div>
+    <div>{{info.archetype}}</div>
     
 
     

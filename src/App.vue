@@ -3,6 +3,8 @@
 import AppHeader from './components/AppHeader.vue';
 import CardList from './components/CardList.vue';
 import axios from 'axios';
+import SelectArchetype from './components/SelectArchetype.vue'
+
 
 import { store } from './store';
 
@@ -10,6 +12,7 @@ export default{
   components:{
     AppHeader,
     CardList,
+    SelectArchetype
   },
   
   data(){
@@ -33,12 +36,31 @@ export default{
       .catch((err)=>{
         console.log("Errori", err)
       })
+    },
+
+    getArcheotype(){
+      axios
+      .get(store.apiArchetypeUrl)
+      .then((response => {
+
+        console.log(response.data)
+
+        store.archetypeNames = response.data
+
+      }))
+      .catch((err)=>{
+        console.log("Errori", err)
+      })
+
     }
   },
 
   created(){
 
     this.getCard()
+
+    this.getArcheotype()
+
 
   }
 }
@@ -50,7 +72,16 @@ export default{
 <template>
   <AppHeader message="YU-GI-OH API"/>
 
-  <CardList/>
+
+  <main>
+
+    <SelectArchetype/>
+
+    <CardList/>
+
+  </main>
+
+
 
 
 

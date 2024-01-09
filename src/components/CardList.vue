@@ -24,7 +24,7 @@ export default{
 
 <template>
 
- <div class="container-fluid">
+ 
 
     <div class="container">
 
@@ -46,7 +46,6 @@ export default{
 
     </div>
 
- </div>
   
 </template>
 
@@ -55,21 +54,19 @@ export default{
 @use '../styles/general.scss' as *;
 @use '../styles/partials/mixins' as *;
 
-.container-fluid{
-    background-color: #d48f38;
-    padding: 3rem 0;
+    
 
 
-    .container{
-        background-color: white;
-        @include center;
+.container{
+    background-color: white;
+    @include center;
 
-        .ms-container{
-            width: 90%;
-            height: 95%;
-        }
+    .ms-container{
+        width: 90%;
+        height: 95%;
     }
 }
+
 
 .row{
     @include wrap;
